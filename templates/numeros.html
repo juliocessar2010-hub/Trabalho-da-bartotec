@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Estatísticas do Jogador</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Cabeçalho -->
+        <header class="cabecalho">
+            <h1>⚽ Estatísticas da sua carreira</h1>
+            <p>Revele os números da sua carreira clicando nos botões!</p>
+        </header>
+
+        <!-- Cartões das estatísticas -->
+        <div class="estatisticas">
+
+            <!-- Gols -->
+            <section class="estatistica">
+                <h2 class="e1">⚽ Gols</h2>
+
+                <form method="POST">
+                    <button type="submit" name="opcao" value="gols">
+                        Revelar gols
+                    </button>
+                </form>
+
+                {% if gols is not none %}
+                    <h3>{{ gols }} gols</h3>
+                    <p>{{ mensagem }}</p>
+                {% else %}
+                    <p>Seus gols estão escondidos...</p>
+                {% endif %}
+            </section>
+
+            <!-- Assistências -->
+            <section class="estatistica">
+                <h2 class="e2">🎯 Assistências</h2>
+
+                <form method="POST">
+                    <button type="submit" name="opcao" value="assistencias">
+                        Revelar assistências
+                    </button>
+                </form>
+
+                {% if assistencias is not none %}
+                    <h3>{{ assistencias }} assistências</h3>
+                    <p>{{ mensagem_assistencias }}</p>
+                {% else %}
+                    <p>Suas assistências estão escondidas...</p>
+                {% endif %}
+            </section>
+
+            <!-- Jogos -->
+            <section class="estatistica">
+                <h2 class="e3">🏟️ Jogos disputados</h2>
+
+                <form method="POST">
+                    <button type="submit" name="opcao" value="jogos">
+                        Revelar jogos
+                    </button>
+                </form>
+
+                {% if jogos is not none %}
+                    <h3>{{ jogos }} jogos</h3>
+                {% else %}
+                    <p>Seus jogos estão escondidos...</p>
+                {% endif %}
+            </section>
+
+            <!-- Títulos -->
+            <section class="estatistica">
+                <h2 class="e4">🏆 Títulos</h2>
+
+                <form method="POST">
+                    <button type="submit" name="opcao" value="titulos">
+                        Revelar títulos
+                    </button>
+                </form>
+
+                {% if titulos is not none %}
+                    <h3>{{ titulos }} títulos</h3>
+                    <p>{{ mensagem_titulos }}</p>
+                {% else %}
+                    <p>Seus títulos estão escondidos...</p>
+                {% endif %}
+            </section>
+
+        </div>
+
+        <!-- Botões inferiores -->
+        <div class="reiniciar">
+            <a href="/reiniciar" class="botao">
+                🔄 Reiniciar carreira
+            </a>
+
+            <a href="/" class="botao">
+                🏠 Página inicial
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

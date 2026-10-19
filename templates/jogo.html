@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modo Carreira</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- Cabeçalho -->
+
+        <header class="cabecalho">
+            <h1>⚽ Modo Carreira ⚽</h1>
+            <p>Sua jornada como jogador começa aqui!</p>
+        </header>
+
+
+        <!-- 01. Rotina de treino -->
+
+        <section class="treino">
+
+            <h2>01. Sua rotina</h2>
+
+            <p>Você está na base. O que deseja fazer?</p>
+
+            <form method="POST" class="e1">
+
+                <button type="submit" name="treino" value="1">
+                    Treinar mais
+                </button>
+
+                <button type="submit" name="treino" value="2">
+                    Tirar folga
+                </button>
+
+            </form>
+
+            {% if mensagem_treino %}
+            <div class="resultado">
+                <p>{{ mensagem_treino }}</p>
+            </div>
+            {% endif %}
+
+        </section>
+
+
+        <!-- 02. Primeiro clube -->
+
+        <section class="clube">
+
+            <h2>02. Seu primeiro clube</h2>
+
+            <p>Escolha seu primeiro clube.</p>
+
+            <form method="POST" class="e2">
+
+                <button type="submit" name="clube" value="1">
+                    Cruzeiro
+                </button>
+
+                <button type="submit" name="clube" value="2">
+                    Corinthians
+                </button>
+
+                <button type="submit" name="clube" value="3">
+                    Santos
+                </button>
+
+            </form>
+
+            {% if mensagem_clube %}
+            <div class="resultado">
+                <p>{{ mensagem_clube }}</p>
+            </div>
+            {% endif %}
+
+        </section>
+
+
+        <!-- 03. Primeiro jogo -->
+
+        <section class="Jogo1">
+
+            <h2>03. Primeiro jogo</h2>
+
+            <p>
+                Depois de um bom tempo observando do banco,
+                você finalmente entra em campo!
+            </p>
+
+            <p>
+                Logo após sua entrada, você recebe a bola
+                na entrada da área. O que você faz?
+            </p>
+
+            <form method="POST" class="d1">
+
+                <button type="submit" name="jogo1" value="1">
+                    Chutar de primeira! ⚽
+                </button>
+
+                <button type="submit" name="jogo1" value="2">
+                    Tocar para seu companheiro! 🎯
+                </button>
+
+                <button type="submit" name="jogo1" value="3">
+                    Tocar para trás e organizar a jogada! 🧠
+                </button>
+
+            </form>
+
+            {% if mensagem_jogo1 %}
+            <div class="resultado">
+                <p>{{ mensagem_jogo1 }}</p>
+            </div>
+            {% endif %}
+
+        </section>
+
+
+        <!-- 04. Jogo importante -->
+
+        <section class="Jg2">
+
+            <h2>04. Jogo importante</h2>
+
+            <p>
+                Depois de disputar vários jogos, você foi
+                escalado para a final da Libertadores!
+            </p>
+
+            <p>
+                O primeiro tempo termina sem muita ação.
+            </p>
+
+            <p>
+                No segundo tempo, você recebe a bola na linha
+                de fundo. Está sendo marcado, mas está perto
+                do gol. O que você faz?
+            </p>
+
+            <form method="POST" class="d2">
+
+                <button type="submit" name="Jg2" value="1">
+                    Driblar o adversário e chutar! ⚽
+                </button>
+
+                <button type="submit" name="Jg2" value="2">
+                    Driblar e passar para o atacante! 🎯
+                </button>
+
+                <button type="submit" name="Jg2" value="3">
+                    Recuar a bola! 🧠
+                </button>
+
+            </form>
+
+            {% if mensagem_jogo2 %}
+            <div class="resultado">
+                <p>{{ mensagem_jogo2 }}</p>
+            </div>
+            {% endif %}
+
+
+            <!-- Placar final -->
+
+            {% if resultado_final %}
+            <section class="Placar">
+
+                <h2>Placar final</h2>
+
+                <div class="Time">
+
+                    <div class="time">
+                        <p>{{ nome_clube }}</p>
+                        <h3>{{ gol_time }}</h3>
+                    </div>
+
+                    <div class="versus">X</div>
+
+                    <div class="time">
+                        <p>Flamengo</p>
+                        <h3>{{ gol_rival }}</h3>
+                    </div>
+
+                </div>
+
+                {% if resultado_final %}
+                <div class="resultado">
+                    <p>{{ resultado_final }}</p>
+                </div>
+                {% endif %}
+
+            </section>
+            {% endif %}
+
+        </section>
+
+        <section>
+            <h2>05. Sua carreira continua</h2>
+            <p>Você chamou muita atenção, e vários clubes querem você!</p>
+            <p>Sua jornada continua...</p>
+            <a class="botao" href="{{ url_for('numeros') }}">Ver os números da sua carreira</a>
+        </section>
+
+
+        <div class="reiniciar">
+        <a href="/reiniciar" class="botao">
+            🔄 Reiniciar carreira
+        </a>
+    </div>
+
+    </main>
+
+</body>
+
+</html>
